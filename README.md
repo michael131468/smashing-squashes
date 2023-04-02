@@ -1,6 +1,6 @@
 # smashing-squashes
 
-A Python friendly smashing dashboard setup
+A Python friendly [Smashing][0] dashboard setup.
 
 ## About
 
