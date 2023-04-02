@@ -1,0 +1,9 @@
+[Core]
+Name = Buzzwords 
+Module = buzzwords
+
+[Documentation]
+Author = Michael Ho
+Version = 0.1
+Website = https://github.com/michael131468/smashing-squashes
+Description = Buzzwords widget data job

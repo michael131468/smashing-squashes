@@ -1,0 +1,9 @@
+[Core]
+Name = Convergence
+Module = convergence
+
+[Documentation]
+Author = Michael Ho
+Version = 0.1
+Website = https://github.com/michael131468/smashing-squashes
+Description = Convergence widget data job

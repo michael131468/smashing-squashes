@@ -1,0 +1,2 @@
+apscheduler==3.10.1
+yapsy==1.12.2

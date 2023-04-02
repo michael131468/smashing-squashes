@@ -1,0 +1,9 @@
+[Core]
+Name = Welcome
+Module = welcome
+
+[Documentation]
+Author = Michael Ho
+Version = 0.1
+Website = https://github.com/michael131468/smashing-squashes
+Description = Welcome widget data job
