@@ -42,8 +42,8 @@ Access the dashboard in your browser with the following url:
 ## Customising the Dashboard Layout
 
 You can customise the dashboard layout by editing the files under the
-dashboard subdirectory. The default layout comes from the defaults of
-the Smashing dashboard.
+`dashboard/dashboards` subdirectory. The default layout comes from the
+defaults of the Smashing dashboard.
 
 You need to re-build and re-launch the container after changing these
 files for them to take effect.
@@ -52,11 +52,19 @@ files for them to take effect.
 
 You can add custom data jobs to feed the dashboard in the feeder
 subdirectory. A default set are provided that feed the sample layout
-with random values.
+with random values. The dashboard widgets and data jobs are linked
+together so modifying the dashboard may require removing/updating the
+jobs to be in sync otherwise the Container may crash with errors.
 
-Simply make a new subdirectory under feeder/jobs and create a
-&lt;name&gt;.py file and &lt;name&gt;.yapsy-plugin file. You can
-populate these files using the other job definitions as a template.
+To make a new data job, simply make a new subdirectory under
+`feeder/jobs` and create a &lt;name&gt;.py file and
+&lt;name&gt;.yapsy-plugin file. You can populate these files using the
+other job definitions as a template. More info on these files is below.
+The jobs framework is using the [Yapsy plugin system][1] as a base so
+you can also find more information from that project space.
+
+You need to re-build and re-launch the container after changing these
+files for them to take effect.
 
 #### &lt;name&gt;.py
 
@@ -98,3 +106,4 @@ the [Smashing][0] dashboard project and is the default file layouts.
 These are distributed under the MIT license.
 
 [0]: https://github.com/Smashing/smashing/
+[1]: https://yapsy.sourceforge.net/
