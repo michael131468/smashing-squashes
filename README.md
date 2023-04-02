@@ -66,16 +66,75 @@ you can also find more information from that project space.
 You need to re-build and re-launch the container after changing these
 files for them to take effect.
 
-#### &lt;name&gt;.py
+- &lt;name&gt;.py
 
-TODO: more info on how this file is structured, the format of the data
-returned, how it correlates to the widget data-id, and notes on the
-class object instance persistency.
+  This file defines the Python snippet to run as a data job. It must
+  import the IPlugin module from the [Yapsy plugin system][1] and
+  define a Class that inherits IPlugin and contains at least the
+  following two public methods:
 
-#### &lt;name&gt;.yapsy-plugin
+    - get_interval(self) -> int
+    - get_data(self) -> dict
 
-TODO: more info on how this file is structured and how it correlates to
-the &lt;name&gt;.py file.
+  The get_interval method should return an integer representing the job
+  execution period in seconds (aka the number of seconds to wait before
+  re-running the data job).
+
+  The get_data method should return a dictionary where the keys
+  correspond to widget data-id's and the values are the data (as
+  dictionaries) to send to the widget endpoint. This allows a job to
+  feed multiple widgets (which may save data bandwidth if operating
+  on a repetitive data source).
+
+  Example of a custom data job:
+
+  ```Python
+  # feeder/jobs/customdata/customdata.py
+  from yapsy.IPlugin import IPlugin
+
+  class CustomData(IPlugin):
+    def get_interval(self) -> int:
+      return 10
+
+    def get_data(self) -> dict:
+      data = {"customdata": {"text": "I am customised"}}
+      return data
+  ```
+
+  If the widget data-id does not exist on the dashboard, this may cause
+  the feeder framework to exit with error.
+
+  Note that the class instantiation is once per program, so repeated
+  runs of the get_data job can save and restore data in the object
+  variables. See the example `valuation` data job for a practical
+  example of this.
+
+  This file must correspond to a .yapsy-plugin file (described next).
+
+- &lt;name&gt;.yapsy-plugin
+
+  This file is a basic ini config file that corresponds to the
+  &lt;name&gt;.py file. Its definition comes from the [Yapsy plugin
+  system][1]. The core configuration should set a human readable name to
+  reference the job as, and reference to the linked python script file.
+  In the case of the example so far:
+
+  ```INI
+  [Core]
+  Name = CustomData
+  Module = customdata
+  ```
+
+  The configuration file should also include some documentation
+  attributes. i.e. Author, Version, Website, Description.
+
+  ```INI
+  [Documentation]
+  Author = Michael Ho
+  Version = 0.1
+  Website = https://github.com/michael131468/smashing-squashes
+  Description = Custom widget data job
+  ```
 
 ## Custom Dashboard Widgets
 
