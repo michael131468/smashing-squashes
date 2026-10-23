@@ -1,0 +1,11 @@
+<h1 class="title" data-bind="title"></h1>
+
+<ul class="list">
+  <li data-foreach-item="items">
+    <span data-bind-class="item.status">&block;</span>
+    <span class="label" data-bind="item.label"></span>
+    <span class="value" data-bind="item.value"></span>
+  </li>
+</ul>
+
+<p class="updated-at" data-bind="updatedAtMessage" data-hideif="lightmode"></p>

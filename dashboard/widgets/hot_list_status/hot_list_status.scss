@@ -1,0 +1,116 @@
+// ----------------------------------------------------------------------------
+// Mixins
+// ----------------------------------------------------------------------------
+@mixin transition($transition-property, $transition-time, $method) {
+  -webkit-transition: $transition-property $transition-time $method;
+  -moz-transition: $transition-property $transition-time $method;
+  -o-transition: $transition-property $transition-time $method;
+  transition: $transition-property $transition-time $method;
+}
+
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color: #000000;
+$title-color: rgba(255, 255, 255, 0.7);
+$status-color: #FFFFFF;
+$label-color: rgba(255, 255, 255, 0.7);
+$value-color: #FFFFFF;
+$message-color: rgba(255, 255, 255, 0.7);
+$updated-at-color: rgba(0, 0, 0, 0.3);
+
+// ----------------------------------------------------------------------------
+// Widget-status styles
+// ----------------------------------------------------------------------------
+.widget-hot-list-status {
+
+  background-color: $background-color;
+  @include transition(background-color, 1s, linear);
+
+  .title {
+    color: $title-color;
+    margin-bottom: 10px;
+  }
+
+  .list {
+    align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: left;
+  }
+  
+  .status {
+    color: $status-color;
+    font-size: 40px;
+  }
+
+  .label {
+    color: $label-color;
+    padding-top: 2px;
+  }
+
+  .value {
+    float: right;
+    margin-left: 12px;
+    font-weight: 600;
+    color: $value-color;
+  }
+
+  .message {
+    color: $message-color;
+    font-size: 18px;
+  }
+  
+  .updated-at {
+    color: $updated-at-color;
+  }
+
+  .ok {
+    color: #00C176;
+    padding-left: 1px;
+    padding-right: 1px;
+    text-shadow: 
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000; 
+  }
+  
+  .warning {
+    color: #FABE28;
+    padding-left: 1px;
+    padding-right: 1px;
+    text-shadow: 
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000; 
+  }
+  
+  .critical {
+    color: #FF003C;
+    padding-left: 1px;
+    padding-right: 1px;
+    text-shadow: 
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000; 
+  }
+  
+  .unknown {
+    color: #FF003C;
+    padding-left: 1px;
+    padding-right: 1px;
+    text-shadow: 
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000; 
+  }
+}
+
+.hot-list-status-ok { background-color: #00C176; }
+.hot-list-status-warning { background-color: #FABE28; }
+.hot-list-status-critical { background-color: #FF003C; }
+.hot-list-status-unknown { background-color: #FF003C; }
